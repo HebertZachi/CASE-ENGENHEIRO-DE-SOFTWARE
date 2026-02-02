@@ -5,9 +5,7 @@ namespace Application.Services.Interfaces
     public interface IService<T> where T : Entity
     {
         Task<T?> FindById(Guid id);
-        Task<IEnumerable<T>> GetAllByPage(int pageNumber = 1, int pageSize = 10);
-        Task Create(T entity);
-        Task UpdateById(Guid id, T entity);
+        Task<IEnumerable<T>> GetAllBylimit(int page = 1, int limit = 10);
         Task SoftDelete(Guid id);
     }
 }
