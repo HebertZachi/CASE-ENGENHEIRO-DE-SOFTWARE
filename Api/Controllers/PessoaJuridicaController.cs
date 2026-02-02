@@ -65,27 +65,45 @@ namespace Api.Controllers
         [HttpGet("cnpj/{cnpj}")]
         public async Task<IActionResult> FindByCnpj(string cnpj)
         {
-            var pessoa = await _pessoaJuridicaService.FindByCnpj(cnpj);
-            if (pessoa == null)
-                return NotFound();
+            try
+            {
+                var pessoa = await _pessoaJuridicaService.FindByCnpj(cnpj);
+                if (pessoa == null)
+                    return NotFound();
 
-            return Ok(pessoa);
+                return Ok(pessoa);
+
+            } catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         [HttpGet("nome-fantasia")]
-        public async Task<IActionResult> FindByNomeFantasia(
-            [FromQuery] string value)
+        public async Task<IActionResult> FindByNomeFantasia([FromQuery] string value) 
         {
-            var pessoas = await _pessoaJuridicaService.FindByNomeFantasia(value);
-            return Ok(pessoas);
+            try
+            {
+                var pessoas = await _pessoaJuridicaService.FindByNomeFantasia(value);
+                return Ok(pessoas);
+            } catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         [HttpGet("razao-social")]
         public async Task<IActionResult> FindByRazaoSocial(
             [FromQuery] string value)
         {
-            var pessoas = await _pessoaJuridicaService.FindByRazaoSocial(value);
-            return Ok(pessoas);
+            try
+            {
+                var pessoas = await _pessoaJuridicaService.FindByRazaoSocial(value);
+                return Ok(pessoas);
+            } catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         [HttpPut("{id:guid}")]
@@ -93,19 +111,31 @@ namespace Api.Controllers
             Guid id,
             [FromBody] UpdatePessoaJuridicaDto dto)
         {
-            var updated = await _pessoaJuridicaService.UpdateById(id, dto);
+            try
+            {
+                var updated = await _pessoaJuridicaService.UpdateById(id, dto);
+                if (updated == null)
+                    return NotFound();
 
-            if (updated == null)
-                return NotFound();
+                return Ok(updated);
 
-            return Ok(updated);
+            } catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _pessoaJuridicaService.SoftDelete(id);
-            return NoContent();
+            try
+            {
+                await _pessoaJuridicaService.SoftDelete(id);
+                return NoContent();
+            } catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 
