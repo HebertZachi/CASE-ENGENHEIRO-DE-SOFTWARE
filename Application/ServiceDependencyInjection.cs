@@ -1,9 +1,6 @@
 ﻿using Application.Services;
 using Application.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application
 {
