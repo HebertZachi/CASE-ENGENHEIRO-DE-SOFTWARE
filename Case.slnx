@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="Adapters/Adapters.csproj" />
   <Project Path="Api/Api.csproj" />
+  <Project Path="Application.DTO/Application.DTO.csproj" Id="502c540f-3263-4296-952e-a8556b968c36" />
   <Project Path="Application.Interfaces/Application.Interfaces.csproj" Id="2fd31d8c-94ce-447b-a26e-caaf61ca7547" />
   <Project Path="Application.Tests/Application.Tests.csproj" />
   <Project Path="Application/Application.csproj" />
