@@ -19,6 +19,9 @@ namespace Infrastructure
                 )
             );
 
+
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IPessoaFisicaRepository, PessoaFisicaRepository>();
             services.AddScoped<IPessoaJuridicaRepository, PessoaJuridicaRepository>();
