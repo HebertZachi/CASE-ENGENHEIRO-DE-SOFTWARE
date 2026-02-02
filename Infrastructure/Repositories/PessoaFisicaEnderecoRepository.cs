@@ -9,16 +9,16 @@ namespace Infrastructure.Repositories
     {
         public PessoaFisicaEnderecoRepository(AppDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<PessoaFisicaEndereco>> FindAllByPessoaFisicaId(Guid pessoaFisicaId, int pageNumber = 1, int pageSize = 10)
+        public async Task<IEnumerable<PessoaFisicaEndereco>> FindAllByPessoaFisicaId(Guid pessoaFisicaId, int page = 1, int limit = 10)
         {
-            if (pageNumber < 1) pageNumber = 1;
-            if (pageSize < 1) pageSize = 10;
+            if (page < 1) page = 1;
+            if (limit < 1) limit = 10;
 
             return await _dbSet
                 .AsNoTracking()
                 .Where(p => !p.IsDeleted && p.PessoaFisicaId == pessoaFisicaId)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
+                .Skip((page - 1) * limit)
+                .Take(limit)
                 .ToListAsync();
         }
     }

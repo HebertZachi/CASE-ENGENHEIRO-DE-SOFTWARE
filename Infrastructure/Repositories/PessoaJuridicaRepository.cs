@@ -16,33 +16,31 @@ namespace Infrastructure.Repositories
         {
             return await _dbSet
                 .AsNoTracking()
-                .Where(p => !p.IsDeleted && p.Cnpj == cnpj)
-                .FirstOrDefaultAsync();
+                .Include(p => p.Endereco)
+                .FirstOrDefaultAsync(p => !p.IsDeleted && p.Cnpj == cnpj);
         }
 
-        public async Task<IEnumerable<PessoaJuridica>> FindByRazaoSocial(string razaoSocial, int pageNumber = 1, int pageSize = 10)
+        public async Task<IEnumerable<PessoaJuridica>> FindByRazaoSocial(
+            string razaoSocial, int page = 1, int limit = 10)
         {
-            if (pageNumber < 1) pageNumber = 1;
-            if (pageSize < 1) pageSize = 10;
-
             return await _dbSet
                 .AsNoTracking()
+                .Include(p => p.Endereco)
                 .Where(p => !p.IsDeleted && p.RazaoSocial.Contains(razaoSocial))
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
+                .Skip((page - 1) * limit)
+                .Take(limit)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PessoaJuridica>> FindByNomeFantasia(string nomeFantasia, int pageNumber = 1, int pageSize = 10)
+        public async Task<IEnumerable<PessoaJuridica>> FindByNomeFantasia(
+            string nomeFantasia, int page = 1, int limit = 10)
         {
-            if (pageNumber < 1) pageNumber = 1;
-            if (pageSize < 1) pageSize = 10;
-
             return await _dbSet
                 .AsNoTracking()
+                .Include(p => p.Endereco)
                 .Where(p => !p.IsDeleted && p.NomeFantasia.Contains(nomeFantasia))
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
+                .Skip((page - 1) * limit)
+                .Take(limit)
                 .ToListAsync();
         }
     }

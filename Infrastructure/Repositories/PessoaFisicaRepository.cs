@@ -14,19 +14,23 @@ namespace Infrastructure.Repositories
             return await _dbSet
                 .AsNoTracking()
                 .Where(p => !p.IsDeleted && p.Cpf == cpf)
+                .Include(p => p.Enderecos)
+                    .ThenInclude(pe => pe.Endereco)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<PessoaFisica>> FindByName(string name, int pageNumber = 1, int pageSize = 10)
+        public async Task<IEnumerable<PessoaFisica>> FindByName(string name, int page = 1, int limit = 10)
         {
-            if (pageNumber < 1) pageNumber = 1;
-            if (pageSize < 1) pageSize = 10;
+            if (page < 1) page = 1;
+            if (limit < 1) limit = 10;
 
             return await _dbSet
                 .AsNoTracking()
+                .Include(p => p.Enderecos)
+                    .ThenInclude(pe => pe.Endereco)
                 .Where(p => !p.IsDeleted && p.Nome.Contains(name))
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
+                .Skip((page - 1) * limit)
+                .Take(limit)
                 .ToListAsync();
         }
     }
