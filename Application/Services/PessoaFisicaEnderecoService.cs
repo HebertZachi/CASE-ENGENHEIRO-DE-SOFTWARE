@@ -14,9 +14,9 @@ namespace Application.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<PessoaFisicaEndereco>> FindByPessoaFisicaId(Guid pessoaFisicaId, int pageNumber = 1, int pageSize = 10)
+        public async Task<IEnumerable<PessoaFisicaEndereco>> FindByPessoaFisicaId(Guid pessoaFisicaId, int page = 1, int limit = 10)
         {
-            return await _repository.FindAllByPessoaFisicaId(pessoaFisicaId, pageNumber, pageSize);
+            return await _repository.FindAllByPessoaFisicaId(pessoaFisicaId, page, limit);
         }
     }
 }
