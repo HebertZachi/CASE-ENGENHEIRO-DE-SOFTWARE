@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTO;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -9,6 +10,6 @@ namespace Infrastructure.Repositories.Interfaces
     public interface IPessoaFisicaRepository : IGenericRepository<PessoaFisica>
     {
         Task<PessoaFisica?> FindByCpf(string cpf);
-        Task<IEnumerable<PessoaFisica>> FindByName(string name, int pageNumber = 1, int pageSize = 10);
+        Task<IEnumerable<PessoaFisica?>> FindByName(string name, int page = 1, int limit = 10);
     }
 }
