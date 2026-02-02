@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities
+﻿  namespace Domain.Entities
 {
     public class PessoaJuridica : Entity
     {
@@ -10,17 +10,27 @@
         public Endereco Endereco { get; private set; }
 
         protected PessoaJuridica() { }
-
+         
         public PessoaJuridica(
             string razaoSocial,
             string nomeFantasia,
             string cnpj,
-            Guid enderecoId)
+            Endereco endereco
+            )
         {
             RazaoSocial = razaoSocial;
             NomeFantasia = nomeFantasia;
             Cnpj = cnpj;
-            EnderecoId = enderecoId;
+            Endereco = endereco;
+        }
+
+        public void Update(string razaoSocial, string nomeFantasia, string cnpj)
+        {
+            RazaoSocial = razaoSocial;
+            NomeFantasia = nomeFantasia;
+            Cnpj = cnpj;
+
+            SetUpdated();
         }
     }
 }

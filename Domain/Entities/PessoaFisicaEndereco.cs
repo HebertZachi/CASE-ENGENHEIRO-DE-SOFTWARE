@@ -10,10 +10,13 @@
 
         protected PessoaFisicaEndereco() { }
 
-        public PessoaFisicaEndereco(Guid pessoaFisicaId, Guid enderecoId)
+        public PessoaFisicaEndereco(PessoaFisica pessoaFisica, Endereco endereco)
         {
-            PessoaFisicaId = pessoaFisicaId;
-            EnderecoId = enderecoId;
+            PessoaFisica = pessoaFisica;
+            PessoaFisicaId = pessoaFisica.Id;
+
+            Endereco = endereco;
+            EnderecoId = endereco.Id;
         }
     }
 }

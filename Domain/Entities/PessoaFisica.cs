@@ -23,5 +23,15 @@
             Cpf = cpf;
             DataNascimento = dataNascimento;
         }
+
+        public void Update(string nome, string sobrenome, DateTime dataNascimento, string cpf)
+        {
+            Nome = nome;
+            Sobrenome = sobrenome;
+            DataNascimento = dataNascimento;
+            Cpf = cpf;
+
+            SetUpdated();
+        }
     }
 }
