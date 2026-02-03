@@ -38,5 +38,29 @@
             Regiao = regiao;
             Ddd = ddd;
         }
+
+        public void Update(
+            string cep,
+            string logradouro,
+            string complemento,
+            string unidade,
+            string bairro,
+            string localidade,
+            string uf,
+            string estado,
+            string regiao,
+            string ddd)
+        {
+            Cep = cep;
+            Logradouro = logradouro;
+            Complemento = complemento;
+            Unidade = unidade;
+            Bairro = bairro;
+            Localidade = localidade;
+            Uf = uf;
+            Estado = estado;
+            Regiao = regiao;
+            Ddd = ddd;
+        }
     }
 }
