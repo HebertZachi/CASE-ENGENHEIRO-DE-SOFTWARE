@@ -24,6 +24,7 @@ namespace Application.DTO
     );
 
     public record UpdateEnderecoDto(
+        [Required] string cep,
         [Required, MaxLength(150)] string Logradouro,
         [MaxLength(50)] string Complemento,
         [MaxLength(20)] string Unidade,
