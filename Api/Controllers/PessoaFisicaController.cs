@@ -51,7 +51,7 @@ namespace Api.Controllers
         {
             try
             {
-                var pessoas = await _pessoaFisicaService.GetAllBylimit(page, limit);
+                var pessoas = await _pessoaFisicaService.GetAllByPage(page, limit);
                 return Ok(pessoas);
             }
             catch (Exception ex)

@@ -52,7 +52,7 @@ namespace Api.Controllers
         {
             try
             {
-                var pessoas = await _pessoaJuridicaService.GetAllBylimit(page, limit);
+                var pessoas = await _pessoaJuridicaService.GetAllByPage(page, limit);
                 return Ok(pessoas);
             }
             catch (Exception ex)
