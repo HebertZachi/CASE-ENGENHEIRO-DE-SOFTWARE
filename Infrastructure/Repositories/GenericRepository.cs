@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
                 .FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<IEnumerable<T>> GetAllBylimit(int page = 1, int limit = 10)
+        public async Task<IEnumerable<T>> GetAllByPage(int page = 1, int limit = 10)
         {
             if (page < 1) page = 1;
             if (limit < 1) limit = 10;

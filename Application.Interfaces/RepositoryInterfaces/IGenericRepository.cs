@@ -10,7 +10,7 @@ namespace Infrastructure.Repositories.Interfaces
     public interface IGenericRepository<T> where T : Entity
     {
         Task<T?> FindById(Guid id);
-        Task<IEnumerable<T>> GetAllBylimit(int page = 1, int limit = 10);
+        Task<IEnumerable<T>> GetAllByPage(int page = 1, int limit = 10);
         Task Create(T entity);
         Task UpdateById(Guid id, T updatedEntity);
         Task SoftDelete(Guid id);
