@@ -15,8 +15,8 @@ namespace Application.Services
 
         public virtual Task<T?> FindById(Guid id) => _repository.FindById(id);
 
-        public virtual Task<IEnumerable<T>> GetAllBylimit(int page = 1, int limit = 10) =>
-            _repository.GetAllBylimit(page, limit);
+        public virtual Task<IEnumerable<T>> GetAllByPage(int page = 1, int limit = 10) =>
+            _repository.GetAllByPage(page, limit);
 
         public virtual Task Create(T entity) => _repository.Create(entity);
 
